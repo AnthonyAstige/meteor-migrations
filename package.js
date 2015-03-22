@@ -8,6 +8,7 @@ Package.describe({
 Package.on_use(function (api) {
   api.versionsFrom('METEOR@0.9.1.1');
   api.use('underscore', 'server');
+  api.use('mongo', 'server');
   api.add_files(['migrations_server.js'], "server");
   api.export('Migrations', 'server');
 });

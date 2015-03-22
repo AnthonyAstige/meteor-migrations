@@ -35,7 +35,13 @@ Migrations = {
 }
 
 // collection holding the control record
-Migrations._collection = new Meteor.Collection('migrations');
+if (Mongo && Mongo.Collection) {
+  // Newer Meteor versions prevent warning
+  Migrations._collection = new Mongo.Collection('migrations');
+} else {
+  // Older Meteor versions compatability
+  Migrations._collection = new Meteor.Collection('migrations');
+}
 
 Meteor.startup(function () {
   if (process.env.MIGRATE)
